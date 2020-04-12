@@ -1,4 +1,4 @@
-# .git-commands
+# Useful .git commands
 
 ### git cat-file -p 875ab93
 
