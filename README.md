@@ -1,23 +1,24 @@
 # Useful .git commands
 
-### git cat-file -p 875ab93
+### git cat-file 875ab93
 
 To see **commit's parents**, **author** and **commiter** ([source](https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/))
 
+`-p` - pretty-print object's content
+`-t` - show object type
+`-s` - show object size
+
 ```bash
-$ git cat-file -p 127196
-
+$ git cat-file 127196 -p
 tree e8a13dd4283eb2635c42079fa77c3480bd153c97
-
 parent 8bd43d673fcf1239e36ec33cbc8d22806461e757
-
 parent 38f8f7b1afc81f74ee2c8d93c359b19636b9d6b1
-
 author Nicola Paolucci <xxxxx@atlassian.com> 1412938811 +0200
-
 committer Nicola Paolucci <xxxxx@atlassian.com> 1412938811 +0200
-
 Merge branch 'test-branch'
+
+$ git cat-file 127196 -t
+blob
 ```
 
 ### git log --pretty=format:"%h:  %d" -1
@@ -47,7 +48,6 @@ $ git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgree
 * 81c7e7eb2 - Merged PR 5258: fix: (test) fix tests (8 weeks ago) <Igor Boiko>
 ```
 
-
 ### cat .git/HEAD
 
 To see HEAD's position ([source](https://stackoverflow.com/a/54935492/1114926))
@@ -56,6 +56,44 @@ To see HEAD's position ([source](https://stackoverflow.com/a/54935492/1114926))
 $ cat .git/HEAD
 ref: refs/heads/add-scss
 ```
+
+### git hash-object file.js
+
+To get SHA1 key of the value.
+Value should be a file, not a string ([source](https://app.pluralsight.com/course-player?clipId=5326515f-7c84-4c87-afa6-e8a3b91aa93b))
+
+`-w` write content to git repository
+
+```bash
+// A value is a file
+$ git hash-object file.js
+9a00219dfec4b54f4791437575505abdd50e56c5
+
+// A value is a string
+$ echo "Apple Pie" | git hash-object --stdin
+23991897e13e47ed0adb91a0082c31c82fe0cbe5
+```
+
+### git count-objects
+
+To calculate objects in objects DB `.git/objects` ([source](https://app.pluralsight.com/course-player?clipId=ecabaccf-18fb-4a5c-b2d8-d35f730c1721))
+
+```bash
+$ git count-objects
+20 objects, 80 kilobytes
+```
+
+### git tag -a mytag -m "I love cheesecake"
+
+To add annotated tag ([source](https://app.pluralsight.com/course-player?clipId=65c52ba1-988c-439c-81df-b1511b2d0530))
+
+```bash
+$ git tag -a mytag -m "I love cheesecake"
+$ git tag
+mytag
+```
+
+### 
 
 ## Other commands
 git log --first-parent
