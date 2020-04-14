@@ -93,6 +93,18 @@ $ git tag
 mytag
 ```
 
+### git show-ref master | origin/master | HEAD | origin/HEAD
+
+To list all of the branches that have `master` in their name
+
+```bash
+$  git show-ref master
+704182f5e2925fbdc03f9874d35ce696c21e9a3d refs/heads/master
+704182f5e2925fbdc03f9874d35ce696c21e9a3d refs/remotes/origin/master
+```
+
+
+
 ### 
 
 ## Other commands
