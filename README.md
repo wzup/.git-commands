@@ -103,9 +103,18 @@ $  git show-ref master
 704182f5e2925fbdc03f9874d35ce696c21e9a3d refs/remotes/origin/master
 ```
 
+### git merge-base feature1 master
 
+To get SHA-1 of the commit `feature1` branched off of master. Good for `rebase` and `squash`
 
-### 
+```bash
+$ git checkout ERD-2356
+$ git merge-base ERD-2356 master
+a8469914bcb6e2dc258e850bedf9660f0405bf00
+
+$ git rebase -i a846991
+$ 
+```
 
 ## Other commands
 git log --first-parent
